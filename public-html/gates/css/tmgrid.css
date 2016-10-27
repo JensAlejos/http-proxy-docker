@@ -1,0 +1,37 @@
+#commodityGridDiv a:link {
+	text-decoration: underline; 
+	color: #006;
+	background: transparent;
+}
+
+
+#commodityGridDiv a:visited {
+    text-decoration: underline; 
+    color:purple;
+}
+
+
+#customerRateGridDiv a:link {
+	text-decoration: underline; 
+	color: #006;
+	background: transparent;
+}
+
+
+#customerRateGridDiv a:visited {
+    text-decoration: underline; 
+    color:purple;
+}
+
+
+#frtPayRateGrDiv a:link {
+	text-decoration: underline; 
+	color: #006;
+	background: transparent;
+}
+
+
+#frtPayRateGrDiv a:visited {
+    text-decoration: underline; 
+    color:purple;
+}

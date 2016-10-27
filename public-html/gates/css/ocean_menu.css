@@ -1,0 +1,147 @@
+#menu {
+	padding: 0;
+	margin: 0;
+    margin-top: 2px; /*0*/
+    margin-right:-2px;
+	list-style: none;
+	position: relative;
+	height: 22px;
+	z-index: 500;
+	font-family: Verdana, Geneva, sans-serif;
+	top: -1px;
+	background-color: #09498C; /*#0039A6*/
+	width:100%;
+
+}
+
+#menu li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#menu li a {
+	display: block;
+	float: left;
+	height: 17px;
+	line-height: 17px;
+	color: #fff;
+	text-decoration: none;
+	font-size: x-small;/*7pt*/
+	font-weight: bold;
+	padding: 3px 13px;
+	background: #09498C /*#0039A6*/ url(../images/pipe.gif) no-repeat left center;
+}
+
+#menu li a.firstItem {
+ background: none;
+}
+
+#menu table {
+	border-collapse: collapse;
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left :0;
+}
+
+/* link styling */
+
+#menu li a:hover {
+	z-index: 200;
+	position: relative;
+	color: #fff;
+	background-color: #09498C; /*#0039A6*/
+}
+
+#menu li:hover {
+	position: relative;
+	z-index: 200;
+}
+
+#menu li.current a {
+	color: #fff;
+	background: #09498C; /*#0039A6*/
+}
+
+#menu :hover ul {
+	left: -1px;
+	top: 17px;
+	width: 170px;
+	background: #444;
+}
+
+#menu ul,
+#menu :hover ul ul {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+	width: 170; /* was 0 leaving of px fixes in FF */
+	height: 17; /* was 0 leaving of px fixes in FF */
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu :hover ul :hover ul {
+	left: 170px;
+	top: 0px;
+	background: #222;
+	white-space: nowrap;
+	width: 170px;
+	z-index: 200;
+	height: auto;
+}
+
+#menu :hover ul :hover ul.lastDrop {
+	left: -176px;
+}
+
+#menu :hover ul li {
+	margin: 0;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+}
+
+#menu :hover ul li a {
+	width: 170px;
+	padding: 0;
+	text-indent: 10px;
+	background: #09498C; /*#0039A6*/
+	color: #fff;
+	height: 22px;
+	line-height: 22px;
+}
+
+#menu :hover ul li a.fly {
+	background: #09498C /*#0039A6*/ url(../images/right-arrow.gif) no-repeat right center;
+}
+
+#menu :hover ul :hover {
+	background-color: #ccc;
+	color: #333;
+}
+
+#menu :hover ul :hover a.fly {
+	background: #ccc url(../images/right-arrow_RO.gif) no-repeat right center;
+	color: #333;
+}
+
+#menu :hover ul :hover ul li a {
+	width: 250px;
+	padding: 0;
+	text-indent: 10px;
+	background: #09498C; /*#0039A6*/
+	color: #fff;
+}
+
+#menu :hover ul :hover ul :hover {
+	background-color: #ccc;
+	color: #333;
+}
+
+#menu li{
+    list-style: none
+}

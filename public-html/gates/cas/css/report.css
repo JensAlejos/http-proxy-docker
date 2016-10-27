@@ -1,0 +1,85 @@
+div.errors {
+  font-size: 8pt;
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
+}
+div.errors ol li {
+  list-style-type: none;
+  margin-left: 20px;
+}
+div.errors { 
+  display: none 
+}
+div.errors p {
+  color: #666;
+  font-weight: bold;
+}
+.errors label.error {
+  display: inline;
+  color: #f80000;
+}
+div.error { 
+  display: none; 
+}
+input {
+  border: 1px solid #333; 
+}
+input.checkbox { 
+  border: none 
+}
+input.error { 
+  background-color: #fbe3e4;
+}
+#distributionError {
+  font-size: 8pt;
+  font-weight: bold;
+  color: #f80000;
+  margin: 5px;
+  padding: 5px;
+  display: none;
+}
+.sectionLabel {
+ color: #09498C;
+ font-size: 14pt;
+ margin-bottom: 8px;
+}
+.filterLabel {
+ color: #333;
+ font-size: 8pt;
+}
+.casPageHead {
+ color: #666;
+ font-size: 11pt;
+ font-weight: bold;
+}
+#distributionTypeMainTABLE {
+  padding: 6px;
+  border: 1px solid silver;
+}
+.distributionOdd {
+  background-color: #efefef;
+  border: 1px solid silver;
+}
+.distribution {
+  color: #333;
+  font-size: 7pt;
+  font-weight: bold;
+}
+.headerBottomMargin {
+	margin-bottom: 4px;
+}
+.searchContainer {
+  padding: 4px;
+  border: 1px solid #003399;
+}
+h3 {
+  color: #666;
+  font-size: 8pt;
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+td {
+	font-size: 8pt;
+}

@@ -1,0 +1,651 @@
+body {
+font-family: verdana,helvetica,sans-serif;PADDING-BOTTOM: 55px;
+}
+
+.link:link, .link:visited { 
+	color:#000099; text-decoration:underline; 
+}
+.link:hover {
+	text-decoration: underline;
+}
+
+.link, .field, .pagebanner, .alt, .expand {
+  font-size: 8pt; 
+}
+
+.subSearch {
+	vertical-align: center;
+	text-align: right;
+	font-size: 7pt;
+	color: #FFFFFF;
+}
+
+.displaytag h1, .displaytag h2, .displaytag h3, .displaytag h4, .displaytag h5, .displaytag h6, .displaytag p, .displaytag strong, .displaytag div, .displaytag form, .displaytag acronym, .displaytag label, .displaytag table, .displaytag td, .displaytag th, .displaytag span, .displaytag a, .displaytag hr, .displaytag code, .displaytag pre, .displaytag hr .displaytag {
+	margin:0;
+	padding:0;
+	font-size: 8pt;
+	background-repeat:no-repeat;
+	list-style-type:none;
+}
+
+
+.displaytag img{ 
+	border:none;
+}
+.displaytag hr {
+	height: 1px;
+	color: #000;
+	clear:both;
+}
+
+.displayag dt {
+	font-weight: bold;
+	
+}
+
+
+
+.displayag h1 {
+	font-size: 2em;
+}
+.displayag h1 a{
+	color: #000;
+}
+
+.displayag h2 {
+	font-size: 1.1em;
+	margin: 10px 0 5px 0;
+}
+
+
+.displayag acronym {
+	border-bottom: 1px dashed #000;
+	cursor: help;
+}
+
+
+.clear {
+	clear: both;
+}
+
+.resultlink:link, .resultlink:visited { 
+	color:#000099; text-decoration:underline; 
+}
+.resultlink:hover {
+	text-decoration: underline;
+}
+
+
+.quickSearchBgColor, .displaytag table {
+  background-color: #09498C;
+}
+
+.displaytagholdertd {
+  margin:0;
+  padding:0;
+  
+}
+
+.displaytagholder, table#displaybase, .displaytagtable {
+	width:100%;
+}
+
+.quickSearchFldBgColor {
+   white-space: nowrap;
+ }
+
+
+.displaytag a, .displaytag a:visited{ 
+	color:#666; text-decoration:none; 
+}
+.displaytag a:hover {
+	text-decoration: none;
+} 
+
+/* --
+div#header {
+	background-color: #fea;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 20px 10px 30px 15px;
+	margin: 10px 5% 20px 5%;
+}
+div#header ul{
+	margin: 10px 0 0 0;
+}
+div#header ul li{
+	list-style-type: none;
+	float: left;
+	padding: 0 10px 0 0;
+	font-weight: bold;
+}
+div#header ul li a{
+	display: block;
+	color: #f00;
+	border-left: 1px solid red;
+	padding-left: 5px;
+}
+div#header ul li a:hover{
+	border-left: 1px solid #000;
+}
+
+*/
+
+
+div#body {
+	margin: 0 5% 20px 5%;
+	padding: 20px 20px 20px 20px;
+	border: 1px dashed #666;
+}
+
+div#validxhtml {
+	float: right;
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px;
+	margin: 5px;
+	width:100px;
+	text-align: center;
+}
+div#footer {
+	border-top: 1px solid #666;
+	padding: 5px 5px 5px 5px;
+	text-align:right;
+}
+
+div#footer span {
+	float: left;
+}
+
+/*.changed {
+	background-color: #ee0;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px;
+}*/
+ul#stylelist {
+	margin:0 0 30px 0;
+}
+
+ul#stylelist li {
+	list-style-type: none;
+	float:left;
+	width:100px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	padding:2px;
+	margin-right: 2px;
+}
+
+.displaytag  table {
+	border: 1px  #003399; 
+	background-color: #09498C;
+}
+.displaytag th {
+	padding: 2px 4px 2px 4px;
+	text-align: left;
+	vertical-align: top;
+	 background-position:right;
+}
+.displaytag td {
+	padding: 2px 4px 2px 4px;
+	text-align: left;
+	vertical-align: top;
+	 background-position:right;
+}
+
+table#displaybase {
+      border-style: none;
+      margin: 0px;
+      background-color: #F3F3F3;
+}
+
+table.displaybasetd {
+	padding: 0px;
+}
+
+
+
+.displaytag th {
+	padding: 2px 4px 2px 4px;
+	text-align: left;
+	vertical-align: top;
+	 background-position:right;
+}
+.displaytag td {
+	padding: 2px 4px 2px 4px;
+	text-align: left;
+	vertical-align: top;
+	 background-position:right;
+}
+
+
+.displaytag thead th,.displaytag th a, .displaytag th a:visited, .displaytag  th a:hover, .displaytag  th a:link {
+    color: #FFFFFF;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.displaytag a, .displaytag a:visited, .displaytag a:link { 
+      text-decoration:none; 
+}
+ 
+.displaytag a:hover {
+ 	text-decoration: underline;
+ } 
+ 
+th.sorted a, th.sortable a {
+	background-position: right;
+	background-color: #09498C;
+	display: inline;
+	width: 100%;
+}
+
+th.sorted {
+    background-color: #09498C;
+}
+
+th.sortable  {
+   
+	background-image: url('../img/arrow_off.png');
+	background-color: #09498C;
+	padding-right: 8px;
+}
+th.order1  {
+	 background-image: url('../img/arrow_down.png');
+	 background-color: #09498C;
+}
+th.order2  {
+	background-image: url('../img/arrow_up.png');
+	background-color: #09498C;
+}
+
+tr.odd {
+  background-color: #efefef
+}
+
+tr.even {
+  background-color: #FFF
+}
+
+tr.rowred {
+background-color: #FFBABA;
+}
+tr.rowyellow {
+background-color: #FEEFB3
+}
+tr.rowblue {
+background-color: #3399CC
+}
+
+tr.rowredodd {
+color: #FF0000;
+background-color: #efefef
+}
+tr.rowblackodd {
+background-color: #efefef
+}
+tr.rowyellowodd {
+color: #FEEFB3;
+background-color: #efefef
+}
+tr.rowblueodd {
+color: #3399CC;
+background-color: #efefef
+}
+tr.rowpinkodd {
+color: #FAAFBE;
+background-color: #efefef
+}
+
+tr.rowredeven {
+color: #FF0000;
+background-color: #FFF
+}
+tr.rowblackeven {
+background-color: #FFF
+}
+tr.rowyelloweven {
+color: #FEEFB3;
+background-color: #FFF
+}
+tr.rowblueeven {
+color: #3399CC;
+background-color: #FFF
+}
+tr.rowpinkeven {
+color: #FAAFBE;
+background-color: #FFF
+}
+
+	
+ul#showsource {
+	float: right;
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin: 5px;
+	width:100px;
+	list-style-type: none;
+}
+
+
+/* test styles */
+table.its thead tr {
+  background-color: #69c;
+}
+
+table.mars thead tr {
+  background-color: #9c9;
+}
+
+
+
+table.simple thead tr {
+  background-color: #eee;
+}
+
+table.simple {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+table.simple td, table.simple th{
+	border: 1px solid #ccc;
+}
+
+table.nocol tbody td, table.nocol tbody th{
+	border-left: none;
+	border-right: none;
+}
+
+
+
+
+table.report td, table.report th{
+	font:         menu;
+}
+table.report th{
+	background:   buttonface;
+	border-width: 1px;
+	border-style: solid;
+	border-color: threedhighlight threedshadow threedshadow threedhighlight;
+	cursor:       auto;
+}
+table.report idcol {
+	background: buttonface;
+}
+
+
+table.report tbody {
+	height: 100px;
+	overflow: auto;
+}
+
+table.report {
+	height: 120px;
+	overflow: auto;
+}
+
+table.report tbody tr{
+	height: 10px;
+}
+
+
+
+
+
+table.mark td.tableCellError {
+	background-color: #d00;
+	color: #fff;
+}
+
+table.sublist {
+	margin: 0 0 0 0;
+	width: 100%;
+}
+table.sublist td, table.sublist th {
+	width: 50%;
+}
+
+div.exportlinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin: -10px 0 10px 0;
+	width: 79%;
+}
+
+span.export {
+	padding: 0 4px 1px 20px;
+	display:inline;
+	cursor: pointer;
+}
+
+span.excel {
+	background-image: url('../img/ico_file_excel.png');
+}
+span.csv {
+	background-image: url('../img/ico_file_csv.png');
+}
+span.xml {
+	background-image: url('../img/ico_file_xml.png');
+}
+span.pdf {
+	background-image: url('../img/ico_file_pdf.png');
+}
+
+span.pagebanner {
+	margin-top: 10px;
+	display:inline;
+	border-right: none;
+}
+
+span.pagelinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 100px;
+	display:inline;
+	border-left: none;
+	margin-bottom: -5px;
+}
+
+table.simple td.textRed {color: #b11;}
+
+
+.green {
+   color: #090;
+}
+.red {
+	color: #f00;
+}
+.black1pxBorder {
+    border: 1px;
+    border-color: #000;
+    border-style: solid;
+}
+.gray1pxBorder {
+    border: 1px;
+    border-color: #666;
+    border-style: solid;
+}
+.silver1pxBorder {
+    border: 1px;
+    border-color: #ccc;
+    border-style: solid;
+}
+.grayBackgroundWith1pxBorder {
+    border: 1px;
+    border-color: #ccc;
+    border-style: solid;
+    background-color: #efefef;
+}
+.underlineGray {
+	border-bottom: 2px solid Gray;
+}
+.toplineSilver1px {
+	border-top: 1px solid #ccc;
+}
+.underlineSilver1px {
+	border-bottom: 1px solid #ccc;
+}
+.white {
+    background-color: #F3F3F3;
+}
+.ltGray {
+    background-color: #efefef;
+}
+.silver {
+    background-color: #ccc;
+}
+
+.medGray {
+    background-color: #999;
+}
+
+.darkGray {
+    background-color: #333;
+}
+.mdBlue {
+	background-color : #036;
+}
+.rowHighlight {
+	background-color: #dee7eb;
+}
+
+.searchTable blankTable {
+	border: 0px solid #666;
+}
+.searchTable table {
+	/* border: 1px solid #CCC; */
+	width: 100%; 
+	margin: 10px 0 10px 0;
+}
+
+#displaydiv {
+	border:1px solid #003399;
+}
+
+.searchTable th, .searchTable td {
+	padding: 2px 4px 2px 4px;
+	//text-align: left;
+	vertical-align: top;
+}
+
+
+span.pagebanner {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin-top: 10px;
+	display:inline;
+	border-right: none;
+	
+}
+
+span.pagelinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 100px;
+	display:inline;
+	border-left: none;
+	margin-bottom: -5px;
+}
+
+.dataField, .dataFieldCenter, .dataFieldRight {
+	color: #000;
+	font-size: 8pt;
+	vertical-align: top;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
+	text-align: right;
+	line-height:25px;
+  	height: 29px;
+  
+}
+.dataFieldCenter {
+	text-align: center;
+}
+.dataFieldRight {
+	text-align: right;
+}
+
+
+.tborder
+{
+	background-color: #7088b0;
+	color: #333;
+}
+
+.alt
+{
+	background-color: #FFF;
+}
+
+.alt a:link
+{
+	color: #06c;
+	text-decoration: underline;
+	font-size: 8pt;
+}
+
+.alt a:visited
+{
+	color: #036;
+	text-decoration: underline;
+}
+
+.alt a:hover, a:active
+{
+	color: #F60;
+	text-decoration: underline;
+}
+
+
+.smallfont
+{
+	font-size: 8pt;
+}
+
+.vbmenu_control
+{
+	background-color: #09498C;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 8px;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+
+.recordsFound {
+	background-color: #fff;
+	color: #333;
+	font-size: 8pt;
+}
+
+.odd td, .even td {
+    color: #666;
+	font-size: 8pt;
+	font-weight: normal;
+	vertical-align: top;
+	padding: 2px 3px 2px 3px;
+	font-weight: normal;
+}
+
+.formLabel {
+  color: #000;
+  font-size: 8pt; 
+}
+
+.displaytag td.rightalign {
+	text-align: right;
+}
+
+.displaytag td.leftalign {
+	text-align: left !important; 
+}
+
+.displaytag td.default {
+}

@@ -1,0 +1,65 @@
+.ui-jqgrid-btable a:link,.ui-jqgrid-btable a:hover,.ui-jqgrid-btable a:active,.ui-jqgrid-btable a:visited
+	{
+	text-decoration: underline;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: left;
+}
+
+input[type=text][readonly],textarea[readonly] {
+	background-color: #D8D8D8;
+}
+
+.cutOff {
+	text-align: left;
+	font-weight: normal;
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+.transparent {
+	background: transparent
+}
+
+#gbox_equipmentGrid tr.jqgrow td:not (.jqgrid-rownum ){
+	background-color: #f3f3f3;
+	!
+	important
+}
+
+#gbox_equipmentGrid tr.jqgrow.ui-state-highlight td:not (.jqgrid-rownum
+	){
+	background-color: #ffef8f;
+	!
+	important
+}
+
+#equipmentGrid .ui-inline-del,#equipmentGrid .ui-inline-edit {
+	display: none;
+	!
+	important
+}
+
+.tip {
+	font: 14px Arial, Helvetica, sans-serif;
+	border: solid 1px #666666;
+	width: auto;
+	padding: 1px;
+	position: absolute;
+	z-index: 100;
+	visibility: hidden;
+	color: #333333;
+	top: 20px;
+	left: 90px;
+	background-color: #FFFFE1;
+	layer-background-color: #FFA8C6;
+}
+
+select[multiple] {
+	height: 20px !important;
+}

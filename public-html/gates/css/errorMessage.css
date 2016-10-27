@@ -1,0 +1,143 @@
+/** css for message messages **/
+
+.message_completed, .message_quiet, .message_loading, .message_info, .message_success, .message_warning, .message_error, .message_validation {  
+    border: 1px solid;  
+    /*margin: 10px 0px;  */
+    padding:5px 10px 5px 35px;  
+    background-repeat: no-repeat;  
+    background-position: 10px 6px;  
+    font-family:Arial, Helvetica, sans-serif;   
+    font-size:13px;  
+}
+.message_quiet {    
+    color: #00529B;  
+    padding:5px 10px 5px 10px;  
+    background-color: #FFFFFF;  
+    background-image: url('');  
+}   
+.message_loading {  
+    color: #00529B;  
+    background-color: #EFEFEF;  
+    background-image: url('../images/loading.gif');  
+} 
+.message_completed {  
+    color: #9F6000; 
+    padding:5px 10px 5px 10px;   
+    background-color: #FFF8CA;  
+    background-image: url(''); 
+} 
+.message_info {  
+    color: #00529B;  
+    background-color: #C9E5FE;  
+    background-image: url('../images/info_medium.gif');  
+}  
+.message_success {  
+    color: #4F8A10;  
+    background-color: #DFF2BF;  
+    background-image:url('../images/success_medium.gif');  
+}  
+.message_warning {  
+    color: #9F6000;  
+    background-color: #FEEFB3;  
+    background-image: url('../images/warning_medium.gif');  
+}  
+.message_error {  
+    color: #D8000C;  
+    background-color: #FFBABA;  
+    background-image: url('../images/error_medium.gif');  
+}  
+
+.message_highlight {
+    background-color: #DDEAFE; 
+}
+
+.message_highlight_field {
+    background-color: #DDEAFE; 
+    border: 1px solid #AAAAAA;
+}
+
+.message_error_field {
+  background-color: #ffc4c4;
+  border: 1px solid #f00; 
+  padding : 1px;
+}
+
+/** css for messages **/
+
+
+#errorDisplayContainer {
+    background: url('../images/warning-large.gif') 2px 2px no-repeat;
+    background-color: #efefef;
+    color: #900;
+    width: auto;
+    border: solid 2px #c00;
+    margin-top: 0px;
+    padding-top: 0px;
+	 display: none;
+}
+#errorDisplayContainer #errorMessages {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    top: 10px;
+    left: 10px;
+    padding-bottom: 5px;
+    width: 90%;
+}
+#errorDisplayContainer #errorMessages h3 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+}
+#errorDisplayContainer #errorMessages dt {
+    font-weight: bold;
+}
+#errorDisplayContainer #errorMessages dd {
+    color: #000;
+    margin-bottom: 10px;
+    padding-left:1px;
+    padding-right:1px;
+    margin-left:1px;
+    margin-right:1px;
+    text-indent:1px;
+}
+
+/* Warning Messages */
+div#warnBorder{
+	width: 450px;
+	padding: 2px 2px 2px 2px;
+	background:#999;
+	color:#000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	overflow: visible;
+}
+
+div#warnContainer {
+	background-color: #efefef;
+	position: relative;
+	width: 100%;
+}
+
+div#warningDisplayContainer {
+	background: url('../images/warning-small-trans.gif') 10px 5px no-repeat;
+	/*background-color: #efefef;*/
+	color: #333;
+	width: 100%;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div#warningDisplayContainer #warningMessages {
+	margin-left: 35px;
+}
+
+div#warningDisplayContainer #warningMessages p {
+	font-weight: bold;
+	margin: 0px;
+}
+div#warningDisplayContainer #warningMessages p span {
+	font-weight: normal;
+}

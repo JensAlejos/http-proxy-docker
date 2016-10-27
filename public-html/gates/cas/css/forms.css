@@ -1,0 +1,45 @@
+.formField, .formButton, .formError, .formFieldDisabled, .formButtonDisabled, .formLabel {
+  color: #000;
+  font: 13px arial,helvetica,clean,sans-serif;
+}
+
+.formError {
+  border-color: #f00;
+  background-color: #ffc4c4;
+}
+.formFieldDisabled {
+  background-color: #ccc;
+}
+.formButtonDisabled {
+  color: #ccc;
+}
+.styledFormButton {
+  background-color: #999;
+  color: #fff;
+  border: none;
+}
+.formRequired {
+	color: #f00;
+	font-weight: bold;
+}
+.searchLabel{
+  color: #FFFFFF;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.buttonNoFloat  {
+  color: #333;
+  font: bold 8pt verdana,helvetica,sans-serif;
+  background-color: #ccc;
+  border: 1px solid;
+  border-color: #999;
+  padding: 3px;  
+}
+
+
+.buttonNoFloat:hover {
+    background: #FFFFFF;
+}
