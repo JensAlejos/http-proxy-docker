@@ -1,4 +1,5 @@
 function blockUI(opts){	
+	console.log('blockUI called');
 	var myOpts = { 
 		message: $('<div class="span-1"><img src="/gates/resources/images/loading.gif"></div>'+
 				'<div class="span-4"><strong>Please wait.<br>Processing ...</strong></div>'), 

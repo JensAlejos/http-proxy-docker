@@ -399,6 +399,7 @@
 
 		// remove the block
 		function remove(el, opts) {
+			console.log('removeeeeeee');
 			var full = (el == window);
 			var $el = $(el);
 			var data = $el.data('blockUI.history');
