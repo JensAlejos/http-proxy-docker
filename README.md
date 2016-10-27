@@ -14,11 +14,20 @@ gates-interactive-web-04.137.0-SNAPSHOT-static-web-content.zip
 ## docker 
 
 // Build docker Image
+
+```
 $ docker build -t gates-proxy-img
+```
 
 // To run docker Image:
+
+```
 $ docker run -dit -p 80:80 --name gates-proxy gates-proxy-img
+```
 
 // Once proxy is running, we can modify resources (js,csc,etc) and deploy to local proxy
 // For example, a change in js will be propagated by
+
+```
 $ docker cp public-html/gates/resources/js/ gates7:/usr/local/apache2/gates.vhost/gates/resources/
+```
