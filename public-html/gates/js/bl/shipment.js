@@ -202,6 +202,9 @@ $(function() {
 	
 	if(null!=$('#shipmentNumber').val() && $.trim($('#shipmentNumber').val())!=''){
 		displayShipment();
+		mypromise.done(function() {
+			displayShipmentDummy();
+		})
 		setScreenFieldPropertiesforScreenFromFTWQ();
 	}else{
 		//createHoldGrid("shipment");	
@@ -453,8 +456,207 @@ function onCompletion(){
 	}
 }
 
+console.log(mypromise);
+
+function displayShipmentDummy() {
+	console.log('displayShipmentDummy() processing...');
+} 	
+
+function displayShipmentCallBack(responseText) {
+
+	console.log('displayShipment() processing...' + Date.now());
+
+	//	D021215: 	Session Variable clear/change shortcut
+	getSearchFieldValue(500);
+	// Clear fields of Shipment form and reset the defaults
+	createHoldGrid("shipment");
+	//openUnreleasedHoldGridOnIntialDisplay("shipment");
+	if(responseText.data==null){
+		$.unblockUI();
+		// Clearing Page
+		clearPageOnLoad();
+		$('#anyChangesDone').val("N");
+		$('#shipmentCorrectionNumber option').remove();	
+		eanableDisableSectionsOnScreen(false);// D019870
+		// loading data
+		showJSON(responseText);
+		showResponseMessages("msgDiv", responseText);
+		// reload grids
+		reloadShipmentGrids();
+		shipmentNotFound = true;
+		if(sessionId ==  $.cookie("JSESSIONID"))
+			showNonExistBillMessage();
+		else{
+			 location.reload();
+		}
+		$('#maintain_commodity_shipment').gatesDisable();
+		$('#updateCommodity').attr("disabled",true);
+		$('#clearCommodity').attr("disabled",true);
+		$('#addCommodity').attr("disabled",true);
+		$('#deleteCommodity').attr("disabled",true);
+		$('#marksAndNumbers').attr("disabled",true);
+		hideCustomizeField = true;
+		clearAllShipmentGrids();
+		$("#shipmentNumber").val(shipment_number);
+		disableActionButtons();
+		setShipmentTitle("");
+		return;
+	}
+	
+	var shipmentId = responseText.data.shipmentId;
+	//D030066
+	createUser = responseText.data.createUser;
+	if (shipmentId == null || shipmentId == undefined || shipmentId == "") {
+		// loading data
+		$.unblockUI();
+		clearPageOnLoad();
+		eanableDisableSectionsOnScreen(false); // D019870
+		setScreenOnLoad();
+		shipmentNotFound = true;
+		if(sessionId ==  $.cookie("JSESSIONID"))
+			showNonExistBillMessage();
+		else{
+			 location.reload();
+		}
+		$('#maintain_commodity_shipment').gatesDisable();
+		$('#updateCommodity').attr("disabled",true);
+		$('#clearCommodity').attr("disabled",true);
+		$('#addCommodity').attr("disabled",true);
+		$('#deleteCommodity').attr("disabled",true);
+		$('#marksAndNumbers').attr("disabled",true);
+		hideCustomizeField = true;
+		clearAllShipmentGrids();
+		setShipmentTitle("");
+		return;
+	} else {
+		hideCustomizeField = false;
+		shipmentNotFound = false;
+		$('#maintain_commodity_shipment').gatesEnable();
+		$('#updateCommodity').attr("disabled",false);
+		$('#clearCommodity').attr("disabled",false);
+		$('#addCommodity').attr("disabled",false);
+		$('#deleteCommodity').attr("disabled",false);
+		$('#marksAndNumbers').attr("disabled",false);
+		eanableDisableSectionsOnScreen(true);
+		$('#overridePlaceOfIssue').attr("disabled",false);
+		if (responseText.messages.error.length == 0) {
+			$.unblockUI({fadeOut:0});
+			$('#shipmentForm').gatesEnable();
+			//D026105: 	Rate Engine: RE Choice Messages Display - Can fields be grayed out, not enterable? 
+			$('#re_choice_dialog').gatesDisable();
+			$('#reChoiceCloseBtn').attr("disabled",false);
+			$('#reChoiceListRateBtn').attr("disabled",false);
+			$('#reChoiceContinueBtn').attr("disabled",false);
+			$('#reUseSelection').removeAttr("disabled");
+			$('#re_error_dialog').gatesDisable();
+			$('#reErrCloseBtn').attr("disabled",false);
+			$('#reErrorListRateBtn').attr("disabled",false);
+			clearPageOnLoad();
+			eanableDisableSectionsOnScreen(true); // D019870
+			showJSON(responseText);
+			$('#auditId').val(responseText.data.header.auditId);
+			$('#auditDesc').val(responseText.data.header.auditDesc);
+			setScreenOnLoad();
+			//Performance Changes - Added asyc call to get BillTypePrintOverride value
+			displayBillOfLading('loading...');
+			displayInvoiceLinks(true);
+			setBillTypePrintOverride(responseText.data);
+			setDivNames();
+			if($('#splServicesHeader').text()==""){
+				setSpecialServiceHeader(responseText);
+			}
+			if($('#clauseHeader').text()==""){
+				setClauseHeader(responseText);
+			}
+			if(domesticForeignIndicator!='china' || domesticForeignIndicator != "china")
+			{
+				$('#overrideInitialLtvDateDefaultvalue').val('');
+			}
+			else
+			{
+				$('#overrideInitialLtvDateDefaultvalue').val(responseText.data.routing.defaultSailDate);
+			}
+			if(!$('#isOverrideInitialLtvDate').attr("checked"))
+			{
+				$('#overrideInitialLtvDate').val($('#overrideInitialLtvDateDefaultvalue').val());
+				$('#overrideInitialLtvDate').css('color','black');
+				$('#isOverrideInitialLtvDate').attr("checked", false);
+			}
+			
+			
+			populateLoadDschPairValues(responseText.data.shipmentLDSPairForm);
+			setIsRefNumberField(responseText.data.referenceNumber.refNumberExistForShipment);
+			// Display Unreleased Holds Grid on initial display
+			openUnreleasedHoldGridOnIntialDisplay("shipment");
+			if ($('#shipmentId').val() != null && $('#shipmentId').val() != ''
+				&& ($('#statusCode').text() == 'ISSUED' || $('#statusCode').text() == 'CORRECTED')) {
+				$('#shipmentBillBtn').attr('disabled', true);
+				$('#shipmentTraceBtn').attr('disabled', true);
+			}else{
+				$('#shipmentBillBtn').attr('disabled', false);
+				$('#shipmentTraceBtn').attr('disabled', false);
+				
+			}
+			makeFormReadOnly(responseText,'shipmentForm',true);
+			if($('#statusCode').text()=="CORRECTED" || $('#statusCode').text()=="ISSUED")
+			{
+					eanableDisableSectionsOnScreen(false);
+					//displayBillOfLading(responseText.data.header.billOfLadingLink);
+					$('#maintain_commodity_shipment').gatesDisable();
+					//$('#overridePlaceOfIssue').attr("disabled",true);
+					enableDisableCommosityButtons();
+			}
+			dirtyData=false;
+			
+			
+			populateCommodityCodeListBilling(responseText.data.shipmentItemForm.commodityCodeList);
+		}
+		createShipmentCommodityGrid();//Defect-25031
+		collapseAll();//Defect-25031
+		$.unblockUI();
+	}
+
+	setShipmentTitle();
+	showSuccessLoadingBillMessage();
+	tempImperialCubeValue=0;
+	tempImperialWeightValue=0;
+	tempMetricCubeValue=0;
+	tempMetricWeightValue=0;
+	changeCountForCube=0;
+	changeCountForWeight=0;
+	
+	if($('#cube').val()!="" ){
+		
+		if($('#unitOfMeasureSourceCode').val()=="I" ){
+			tempImperialCubeValue=$('#cube').val();
+		}else{
+			tempMetricCubeValue=$('#cube').val();
+		}
+		/*//D026553
+		if( $('#piece').val()!=''&& $('#piece').val()!=0)
+		{
+			$('#cube').val($('#cube').val()*$('#piece').val());
+		}*/
+	}
+	if($('#netWeight').val()!=""){
+		
+		if($('#unitOfMeasureSourceCode').val()=="I" ){
+			tempImperialWeightValue=$('#netWeight').val();
+		}else{
+			tempMetricWeightValue=$('#netWeight').val();
+		}
+	}
+	/*setCommunicationMethodCodeForShipper(responseText.data.shipper.communicationMethodCode);
+	setCommunicationMethodCodeForConsignee(responseText.data.consignee.communicationMethodCode);*/
+}
+
 function displayShipment() {
 	
+	console.log('displayShipment()');
+
+	mypromise.done(displayShipmentDummy);
+
+
 	var shipment_number = $("#shipmentNumber").val();
 	var shipment_sequence_number = $("#shipmentSequenceNumber").val();
 	var shipment_correction_number = $("#shipmentCorrectionNumber").val();
@@ -523,6 +725,8 @@ function displayShipment() {
 		document.getElementById("commentsDIV").innerHTML='';
 	/** Going to populate Shipment */
 	
+	console.log('populateShipment-Before' + Date.now());
+
 	$.ajax({
 		async: false,
 		type : "POST",
@@ -532,190 +736,7 @@ function displayShipment() {
 			shipment_sequence_number : shipment_sequence_number,
 			shipment_correction_number : shipment_correction_number
 		},
-		success : function(responseText) {
-			//	D021215: 	Session Variable clear/change shortcut
-			getSearchFieldValue(500);
-			// Clear fields of Shipment form and reset the defaults
-			createHoldGrid("shipment");
-			//openUnreleasedHoldGridOnIntialDisplay("shipment");
-			if(responseText.data==null){
-				$.unblockUI();
-				// Clearing Page
-				clearPageOnLoad();
-				$('#anyChangesDone').val("N");
-				$('#shipmentCorrectionNumber option').remove();	
-				eanableDisableSectionsOnScreen(false);// D019870
-				// loading data
-				showJSON(responseText);
-				showResponseMessages("msgDiv", responseText);
-				// reload grids
-				reloadShipmentGrids();
-				shipmentNotFound = true;
-				if(sessionId ==  $.cookie("JSESSIONID"))
-					showNonExistBillMessage();
-				else{
-					 location.reload();
-				}
-				$('#maintain_commodity_shipment').gatesDisable();
-				$('#updateCommodity').attr("disabled",true);
-				$('#clearCommodity').attr("disabled",true);
-				$('#addCommodity').attr("disabled",true);
-				$('#deleteCommodity').attr("disabled",true);
-				$('#marksAndNumbers').attr("disabled",true);
-				hideCustomizeField = true;
-				clearAllShipmentGrids();
-				$("#shipmentNumber").val(shipment_number);
-				disableActionButtons();
-				setShipmentTitle("");
-				return;
-			}
-			
-			var shipmentId = responseText.data.shipmentId;
-			//D030066
-			createUser = responseText.data.createUser;
-			if (shipmentId == null || shipmentId == undefined || shipmentId == "") {
-				// loading data
-				$.unblockUI();
-				clearPageOnLoad();
-				eanableDisableSectionsOnScreen(false); // D019870
-				setScreenOnLoad();
-				shipmentNotFound = true;
-				if(sessionId ==  $.cookie("JSESSIONID"))
-					showNonExistBillMessage();
-				else{
-					 location.reload();
-				}
-				$('#maintain_commodity_shipment').gatesDisable();
-				$('#updateCommodity').attr("disabled",true);
-				$('#clearCommodity').attr("disabled",true);
-				$('#addCommodity').attr("disabled",true);
-				$('#deleteCommodity').attr("disabled",true);
-				$('#marksAndNumbers').attr("disabled",true);
-				hideCustomizeField = true;
-				clearAllShipmentGrids();
-				setShipmentTitle("");
-				return;
-			} else {
-				hideCustomizeField = false;
-				shipmentNotFound = false;
-				$('#maintain_commodity_shipment').gatesEnable();
-				$('#updateCommodity').attr("disabled",false);
-				$('#clearCommodity').attr("disabled",false);
-				$('#addCommodity').attr("disabled",false);
-				$('#deleteCommodity').attr("disabled",false);
-				$('#marksAndNumbers').attr("disabled",false);
-				eanableDisableSectionsOnScreen(true);
-				$('#overridePlaceOfIssue').attr("disabled",false);
-				if (responseText.messages.error.length == 0) {
-					$.unblockUI();
-					$('#shipmentForm').gatesEnable();
-					//D026105: 	Rate Engine: RE Choice Messages Display - Can fields be grayed out, not enterable? 
-					$('#re_choice_dialog').gatesDisable();
-					$('#reChoiceCloseBtn').attr("disabled",false);
-					$('#reChoiceListRateBtn').attr("disabled",false);
-					$('#reChoiceContinueBtn').attr("disabled",false);
-					$('#reUseSelection').removeAttr("disabled");
-					$('#re_error_dialog').gatesDisable();
-					$('#reErrCloseBtn').attr("disabled",false);
-					$('#reErrorListRateBtn').attr("disabled",false);
-					clearPageOnLoad();
-					eanableDisableSectionsOnScreen(true); // D019870
-					showJSON(responseText);
-					$('#auditId').val(responseText.data.header.auditId);
-					$('#auditDesc').val(responseText.data.header.auditDesc);
-					setScreenOnLoad();
-					//Performance Changes - Added asyc call to get BillTypePrintOverride value
-					displayBillOfLading('loading...');
-					displayInvoiceLinks(true);
-					setBillTypePrintOverride(responseText.data);
-					setDivNames();
-					if($('#splServicesHeader').text()==""){
-						setSpecialServiceHeader(responseText);
-					}
-					if($('#clauseHeader').text()==""){
-						setClauseHeader(responseText);
-					}
-					if(domesticForeignIndicator!='china' || domesticForeignIndicator != "china")
-					{
-						$('#overrideInitialLtvDateDefaultvalue').val('');
-					}
-					else
-					{
-						$('#overrideInitialLtvDateDefaultvalue').val(responseText.data.routing.defaultSailDate);
-					}
-					if(!$('#isOverrideInitialLtvDate').attr("checked"))
-					{
-						$('#overrideInitialLtvDate').val($('#overrideInitialLtvDateDefaultvalue').val());
-						$('#overrideInitialLtvDate').css('color','black');
-						$('#isOverrideInitialLtvDate').attr("checked", false);
-					}
-					
-					
-					populateLoadDschPairValues(responseText.data.shipmentLDSPairForm);
-					setIsRefNumberField(responseText.data.referenceNumber.refNumberExistForShipment);
-					// Display Unreleased Holds Grid on initial display
-					openUnreleasedHoldGridOnIntialDisplay("shipment");
-					if ($('#shipmentId').val() != null && $('#shipmentId').val() != ''
-						&& ($('#statusCode').text() == 'ISSUED' || $('#statusCode').text() == 'CORRECTED')) {
-						$('#shipmentBillBtn').attr('disabled', true);
-						$('#shipmentTraceBtn').attr('disabled', true);
-					}else{
-						$('#shipmentBillBtn').attr('disabled', false);
-						$('#shipmentTraceBtn').attr('disabled', false);
-						
-					}
-					makeFormReadOnly(responseText,'shipmentForm',true);
-					if($('#statusCode').text()=="CORRECTED" || $('#statusCode').text()=="ISSUED")
-					{
-							eanableDisableSectionsOnScreen(false);
-							//displayBillOfLading(responseText.data.header.billOfLadingLink);
-							$('#maintain_commodity_shipment').gatesDisable();
-							//$('#overridePlaceOfIssue').attr("disabled",true);
-							enableDisableCommosityButtons();
-					}
-					dirtyData=false;
-					
-					
-					populateCommodityCodeListBilling(responseText.data.shipmentItemForm.commodityCodeList);
-				}
-				createShipmentCommodityGrid();//Defect-25031
-				collapseAll();//Defect-25031
-				$.unblockUI();
-			}
-		
-			setShipmentTitle();
-			showSuccessLoadingBillMessage();
-			tempImperialCubeValue=0;
-			tempImperialWeightValue=0;
-			tempMetricCubeValue=0;
-			tempMetricWeightValue=0;
-			changeCountForCube=0;
-			changeCountForWeight=0;
-			
-			if($('#cube').val()!="" ){
-				
-				if($('#unitOfMeasureSourceCode').val()=="I" ){
-					tempImperialCubeValue=$('#cube').val();
-				}else{
-					tempMetricCubeValue=$('#cube').val();
-				}
-				/*//D026553
-				if( $('#piece').val()!=''&& $('#piece').val()!=0)
-				{
-					$('#cube').val($('#cube').val()*$('#piece').val());
-				}*/
-			}
-			if($('#netWeight').val()!=""){
-				
-				if($('#unitOfMeasureSourceCode').val()=="I" ){
-					tempImperialWeightValue=$('#netWeight').val();
-				}else{
-					tempMetricWeightValue=$('#netWeight').val();
-				}
-			}
-			/*setCommunicationMethodCodeForShipper(responseText.data.shipper.communicationMethodCode);
-			setCommunicationMethodCodeForConsignee(responseText.data.consignee.communicationMethodCode);*/
-		},
+		success : displayShipmentCallBack,
 		error : function(responseText) {
 			//$.unblockUI();
 			shipmentNotFound = true;
@@ -2878,7 +2899,7 @@ function setScreenFieldPropertiesforScreenFromFTWQ(){
 	}
 
 	function enableDisableSection(sectionId, accordian, _displayOnly, _modifiableOnly, source){
-		console.log("Section="+sectionId+" dis="+ _displayOnly+" mod="+_modifiableOnly);
+		//console.log("Section="+sectionId+" dis="+ _displayOnly+" mod="+_modifiableOnly);
 		
 		if(_displayOnly && _modifiableOnly){
 			//Commented all header fileds for defect D029134

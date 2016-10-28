@@ -1,5 +1,27 @@
 function blockUI(opts){	
-	console.log('blockUI called');
+	console.log('blockUI called' +  Date.now());
+
+console.log('mypromise called' +  Date.now());
+var mypromise = $.ajax({
+		async: true,
+		type : "POST",
+		url :  "/gates/shipment/populateShipment",
+		data : {
+			shipment_number : '4270651',
+			shipment_sequence_number : '000',
+			shipment_correction_number : '000'
+		},
+		success : function(responseText) {
+			console.log('success called' +  Date.now());
+			//displayShipmentDummy();
+		},
+		error : function(responseText) {
+
+		}
+	});
+
+console.log('mypromise:' +  mypromise);	
+
 	var myOpts = { 
 		message: $('<div class="span-1"><img src="/gates/resources/images/loading.gif"></div>'+
 				'<div class="span-4"><strong>Please wait.<br>Processing ...</strong></div>'), 
@@ -7,7 +29,9 @@ function blockUI(opts){
 		overlayCSS:  {
 			backgroundColor: '#FFFFFF',
 			opacity: 0.2,
-			cursor: 'wait' }
+			cursor: 'wait' },
+		fadeIn:0,
+		fadeOut:0
 		};
 	
 	var fullOpts = $.extend({}, myOpts, opts || {});	

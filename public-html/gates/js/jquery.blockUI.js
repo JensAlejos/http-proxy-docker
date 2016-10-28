@@ -203,6 +203,7 @@
 		var pageBlockEls = [];
 
 		function install(el, opts) {
+			console.log("blockUI.install called")
 			var css, themedCSS;
 			var full = (el == window);
 			var msg = (opts && opts.message !== undefined ? opts.message : undefined);
@@ -399,7 +400,7 @@
 
 		// remove the block
 		function remove(el, opts) {
-			console.log('removeeeeeee');
+			console.log("blockUI.remove called")
 			var full = (el == window);
 			var $el = $(el);
 			var data = $el.data('blockUI.history');
